@@ -11,7 +11,9 @@
           <div>Description : {{ getUserObj.profileDescription }}</div>
         </mat-card-content>
         <mat-card-actions class="d-flex justify-content-between">
-          <button mat-raised-button color="primary">Edit</button>
+          <button 
+          routerLink="edit"
+          mat-raised-button color="primary">Edit</button>
           <button (click)="onRemove()" mat-raised-button color="warn">
             Remove
           </button>

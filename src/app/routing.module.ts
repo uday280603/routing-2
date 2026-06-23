@@ -51,6 +51,11 @@ const routes: Routes = [
   {
     path: 'users/addUser',
     component: UserFormComponent,
+  },
+  
+  {
+    path: 'users/:userId/edit',
+    component: UserFormComponent,
   }
 ];
 

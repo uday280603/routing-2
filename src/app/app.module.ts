@@ -19,6 +19,7 @@ import { GetConfirmComponent } from './shared/component/get-confirm/get-confirm.
 import { UserDashboardComponent } from './shared/component/user/user-dashboard/user-dashboard.component';
 import { SingleUserComponent } from './shared/component/user/single-user/single-user.component';
 import {MatChipsModule} from '@angular/material/chips';
+import { UserFormComponent } from './shared/component/user/user-form/user-form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import {MatChipsModule} from '@angular/material/chips';
     SingleProductComponent,
     GetConfirmComponent,
     UserDashboardComponent,
-    SingleUserComponent
+    SingleUserComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,

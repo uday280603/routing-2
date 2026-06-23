@@ -1,1 +1,137 @@
-<p>user-form works!</p>
+<!-- {
+    userName: 'Ronak Indrawar',
+    userId: '101',
+    userRole: 'Frontend Developer',
+    profileImage:
+      'https://th.bing.com/th/id/OIP.AbGafkazjc_S1pZPh0B9cQHaIm?w=179&h=208&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3',
+    profileDescription:
+      'Passionate Frontend Developer with expertise in Angular and modern web technologies.',
+    skills: ['Angular', 'TypeScript', 'HTML', 'CSS'],
+    experienceYears: '4',
+    isActive: true,
+    address: {
+      current: {
+        city: 'Pune',
+        state: 'Maharashtra',
+        country: 'India',
+        zipCode: '411001',
+      },
+      permanent: {
+        city: 'Nashik',
+        state: 'Maharashtra',
+        country: 'India',
+        zipCode: '422001',
+      },
+    },
+    isAddSame: false,
+  } -->
+
+<div class="containter mt-5">
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <div class="card">
+        <div class="card-body">
+          <p class="alert alert-success text-center">User Form</p>
+          <form [formGroup]="userForm">
+            <div class="card mb-5">
+              <div class="card-body">
+                <h3 class="font-weight-bold">Basic Information</h3>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="userName">User Name*</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="userName"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="userRole">User Role*</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="userRole"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="experienceYears"
+                        >User Experience(years)*</label
+                      >
+                      <select
+                        type="text"
+                        class="form-control"
+                        formControlName="experienceYears"
+                      >
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="isActive">User Status*</label>
+                      <select
+                        type="text"
+                        class="form-control"
+                        formControlName="isActive"
+                      >
+                        <option [ngValue]="true">Yes</option>
+                        <option [ngValue]="false">No</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="profileImage">Profile Link*</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="profileImage"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="profileDescription">Profile Description*</label>
+                  <textarea
+                    type="text"
+                    class="form-control"
+                    formControlName="profileDescription"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between">
+                  <h3 class="font-weight-bold">Skills</h3>
+                  <button
+                  (click)="onAddSkills()"
+                   mat-raised-button color="primary">Add Skill</button>
+                </div>
+                <div formArrayName="skills" class="row">
+                  <div class="col-md-10">
+                    <div class="form-group" *ngFor="let skill of skillsArr.controls ; let i = index">
+                      <input type="text" class="form-control" [formControlName]="i"/>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <button mat-raised-button color="warn">Remove</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
