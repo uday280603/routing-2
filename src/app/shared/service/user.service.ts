@@ -22,7 +22,7 @@ export class UserService{
       'https://th.bing.com/th/id/OIP.AbGafkazjc_S1pZPh0B9cQHaIm?w=179&h=208&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3',
     profileDescription:
       'Passionate Frontend Developer with expertise in Angular and modern web technologies.',
-    skills: ['Angular', 'TypeScript', 'HTML', 'CSS'],
+    skills: ['Angular', 'TypeScript', 'HTML'],
     experienceYears: '4',
     isActive: true,
     address: {
@@ -50,7 +50,7 @@ export class UserService{
     profileDescription:
       'Experienced Backend Developer specializing in scalable APIs and database management.',
     skills: ['Node.js', 'Express', 'MongoDB'],
-    experienceYears: '6',
+    experienceYears: '5',
     isActive: false,
     address: {
       current: {
@@ -85,6 +85,23 @@ removeUser(removeId : string) : Observable<Ires<Iuser>>{
   return of({
     msg : `The user with id ${removeId} is removed successfully...!`,
     data : arr[0]
+  })
+}
+
+onAddUser(new_obj : Iuser) : Observable<Ires<Iuser>>{
+  this.usersArray.unshift(new_obj)
+  return of ({
+    msg : `The user with id ${new_obj.userId} is added succcessfullu..!`,
+    data : new_obj
+  })
+}
+
+onUpdateUser(updatedObj : Iuser) : Observable<Ires<Iuser>>{
+  let GETINDEX = this.usersArray.findIndex(u => u.userId === updatedObj.userId);
+  this.usersArray[GETINDEX] = updatedObj;
+  return of({
+    msg : `The user with id ${updatedObj.userId} is updated successfully..!`,
+    data : updatedObj
   })
 }
 }

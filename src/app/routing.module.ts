@@ -18,8 +18,27 @@ const routes: Routes = [
   {
     path: 'products',
     component: ProductDashboardComponent,
+    children : [
+      {
+    path: 'addProduct',
+    component: ProductFormComponent,
   },
-   {
+  {
+    path: ':productId',
+    component: SingleProductComponent,
+  },
+
+  {
+    path: ':productId/edit',
+    component: ProductFormComponent,
+  },
+  {
+    path: ':productId/remove',
+    component: GetConfirmComponent,
+  }
+    ]
+  },
+  {
     path: 'products/addProduct',
     component: ProductFormComponent,
   },
@@ -27,8 +46,7 @@ const routes: Routes = [
     path: 'products/:productId',
     component: SingleProductComponent,
   },
-  
- 
+
   {
     path: 'products/:productId/edit',
     component: ProductFormComponent,
@@ -36,27 +54,39 @@ const routes: Routes = [
   {
     path: 'products/:productId/remove',
     component: GetConfirmComponent,
-  }
-  ,
+  },
   {
     path: 'users',
     component: UserDashboardComponent,
-  }
-  ,
-  {
-    path: 'users/:userId',
-    component: SingleUserComponent,
-  }
-  ,
+    children: [
+      {
+        path: 'addUser',
+        component: UserFormComponent,
+      },
+      {
+        path: ':userId',
+        component: SingleUserComponent,
+      },
+
+      {
+        path: ':userId/edit',
+        component: UserFormComponent,
+      },
+    ],
+  },
   {
     path: 'users/addUser',
     component: UserFormComponent,
   },
-  
+  {
+    path: 'users/:userId',
+    component: SingleUserComponent,
+  },
+
   {
     path: 'users/:userId/edit',
     component: UserFormComponent,
-  }
+  },
 ];
 
 @NgModule({

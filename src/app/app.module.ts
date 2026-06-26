@@ -20,6 +20,7 @@ import { UserDashboardComponent } from './shared/component/user/user-dashboard/u
 import { SingleUserComponent } from './shared/component/user/single-user/single-user.component';
 import {MatChipsModule} from '@angular/material/chips';
 import { UserFormComponent } from './shared/component/user/user-form/user-form.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,8 @@ import { UserFormComponent } from './shared/component/user/user-form/user-form.c
     MatCardModule,
     MatDividerModule,
     ReactiveFormsModule,
-    MatChipsModule
+    MatChipsModule,
+     MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent],

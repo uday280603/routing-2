@@ -1,6 +1,6 @@
 <div class="container mt-5">
   <div class="row mb-5">
-    <button mat-raised-button color="primary">Add Users</button>
+    <button mat-raised-button color="primary" routerLink="addUser">Add Users</button>
   </div>
   <div class="row">
     <div class="col-md-4">
@@ -9,6 +9,7 @@
           <p class="alert alert-warning">Users List</p>
           <ul class="list-group">
             <li 
+            routerLinkActive="active"
             [routerLink]="user.userId"
             class="list-group-item" *ngFor="let user of getAllUsers">
                 {{user.userName}}
@@ -19,7 +20,7 @@
       </div>
     </div>
     <div class="col-md-8">
-      <strong>Users Description</strong>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

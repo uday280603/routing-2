@@ -1,30 +1,4 @@
-<!-- <div class="row mt-5 mb-2 ">
-  <button
-  routerLink="addProduct"
-   mat-raised-button color="primary" class="mr-2">Add Product</button>
-</div>
 
-<div class="row mt-2" *ngIf="getAllProducts.length > 0 ; else noProductsInDatabase">
-  <div class="col-md-4">
-    <p>product list</p>
-    <div class="card">
-      <div class="card-body">
-        <ul class="list-group">
-          <li 
-          [routerLink]="[product.productId]"
-          class="list-group-item" 
-          *ngFor="let product of getAllProducts">
-            {{ product.productName }}
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-8"></div>
-</div>
-<ng-template #noProductsInDatabase>
-  <p class="alert alert-info">No Products in database yet..!</p>
-</ng-template> -->
 <div class="row mt-5 mb-3">
   <div class="col text-end">
     <button
@@ -36,7 +10,7 @@
   </div>
 </div>
 
-<div class="row mt-2" *ngIf="getAllProducts.length > 0; else noProductsInDatabase">
+<div class="row" *ngIf="getAllProducts.length > 0; else noProductsInDatabase">
   <div class="col-md-4">
     <div class="card shadow-sm">
       <div class="card-header">
@@ -46,6 +20,7 @@
       <div class="card-body p-0">
         <ul class="list-group list-group-flush">
           <li
+          routerLinkActive="active"
             *ngFor="let product of getAllProducts"
             [routerLink]="[product.productId]"
             class="list-group-item list-group-item-action"

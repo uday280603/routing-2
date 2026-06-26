@@ -1,45 +1,18 @@
-<!-- {
-    userName: 'Ronak Indrawar',
-    userId: '101',
-    userRole: 'Frontend Developer',
-    profileImage:
-      'https://th.bing.com/th/id/OIP.AbGafkazjc_S1pZPh0B9cQHaIm?w=179&h=208&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3',
-    profileDescription:
-      'Passionate Frontend Developer with expertise in Angular and modern web technologies.',
-    skills: ['Angular', 'TypeScript', 'HTML', 'CSS'],
-    experienceYears: '4',
-    isActive: true,
-    address: {
-      current: {
-        city: 'Pune',
-        state: 'Maharashtra',
-        country: 'India',
-        zipCode: '411001',
-      },
-      permanent: {
-        city: 'Nashik',
-        state: 'Maharashtra',
-        country: 'India',
-        zipCode: '422001',
-      },
-    },
-    isAddSame: false,
-  } -->
-
-<div class="containter mt-5">
+<div class="container">
   <div class="row">
     <div class="col-md-10 offset-md-1">
       <div class="card">
         <div class="card-body">
-          <p class="alert alert-success text-center">User Form</p>
-          <form [formGroup]="userForm">
-            <div class="card mb-5">
+          <p class="alert alert-success text-center">USER FORM</p>
+          <form [formGroup]="userForm" (ngSubmit)="onAddUser()">
+            <div class="card mb-4">
               <div class="card-body">
-                <h3 class="font-weight-bold">Basic Information</h3>
+                <h3 class="mb-3">Basic Information</h3>
+
                 <div class="row">
                   <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="userName">User Name*</label>
+                    <div class="form-group mb-3">
+                      <label>User Name *</label>
                       <input
                         type="text"
                         class="form-control"
@@ -47,9 +20,10 @@
                       />
                     </div>
                   </div>
+
                   <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="userRole">User Role*</label>
+                    <div class="form-group mb-3">
+                      <label>User Role *</label>
                       <input
                         type="text"
                         class="form-control"
@@ -58,17 +32,17 @@
                     </div>
                   </div>
                 </div>
+
                 <div class="row">
                   <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="experienceYears"
-                        >User Experience(years)*</label
-                      >
+                    <div class="form-group mb-3">
+                      <label>Experience (Years)</label>
+
                       <select
-                        type="text"
                         class="form-control"
                         formControlName="experienceYears"
                       >
+                        <option value="">Select</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -77,57 +51,178 @@
                       </select>
                     </div>
                   </div>
+
                   <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="isActive">User Status*</label>
-                      <select
-                        type="text"
-                        class="form-control"
-                        formControlName="isActive"
-                      >
-                        <option [ngValue]="true">Yes</option>
-                        <option [ngValue]="false">No</option>
+                    <div class="form-group mb-3">
+                      <label>Status</label>
+
+                      <select class="form-control" formControlName="isActive">
+                        <option [ngValue]="true">Active</option>
+                        <option [ngValue]="false">Inactive</option>
                       </select>
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="profileImage">Profile Link*</label>
+
+                <div class="form-group mb-3">
+                  <label>Profile Image URL *</label>
+
                   <input
                     type="text"
                     class="form-control"
                     formControlName="profileImage"
                   />
                 </div>
-                <div class="form-group">
-                  <label for="profileDescription">Profile Description*</label>
+
+                <div class="form-group mb-3">
+                  <label>Profile Description *</label>
+
                   <textarea
-                    type="text"
+                    rows="4"
                     class="form-control"
                     formControlName="profileDescription"
                   ></textarea>
                 </div>
               </div>
             </div>
-            <div class="card">
+
+            <div class="card mb-4">
               <div class="card-body">
-                <div class="d-flex justify-content-between">
-                  <h3 class="font-weight-bold">Skills</h3>
-                  <button
-                  (click)="onAddSkills()"
-                   mat-raised-button color="primary">Add Skill</button>
-                </div>
-                <div formArrayName="skills" class="row">
-                  <div class="col-md-10">
-                    <div class="form-group" *ngFor="let skill of skillsArr.controls ; let i = index">
-                      <input type="text" class="form-control" [formControlName]="i"/>
+                <h3 class="mb-3">Current Address</h3>
+
+                <div formGroupName="address">
+                  <div formGroupName="current">
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <label>City</label>
+                        <input class="form-control" formControlName="city" />
+                      </div>
+
+                      <div class="col-md-6 mb-3">
+                        <label>State</label>
+                        <input class="form-control" formControlName="state" />
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <label>Country</label>
+                        <input class="form-control" formControlName="country" />
+                      </div>
+
+                      <div class="col-md-6 mb-3">
+                        <label>Zip Code</label>
+                        <input class="form-control" formControlName="zipCode" />
+                      </div>
                     </div>
                   </div>
-                  <div class="col-md-2">
-                    <button mat-raised-button color="warn">Remove</button>
+
+                  <hr />
+
+                  <h3 class="mb-3">Permanent Address</h3>
+
+                  <div formGroupName="permanent">
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <label>City</label>
+                        <input class="form-control" formControlName="city" />
+                      </div>
+
+                      <div class="col-md-6 mb-3">
+                        <label>State</label>
+                        <input class="form-control" formControlName="state" />
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <label>Country</label>
+                        <input class="form-control" formControlName="country" />
+                      </div>
+
+                      <div class="col-md-6 mb-3">
+                        <label>Zip Code</label>
+                        <input class="form-control" formControlName="zipCode" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-3">
+                  <mat-checkbox formControlName="isAddSame">
+                    Permanent Address Same as Current Address
+                  </mat-checkbox>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mb-4">
+              <div class="card-body">
+                <div
+                  class="d-flex justify-content-between align-items-center mb-3"
+                >
+                  <h3>Skills</h3>
+
+                  <button
+                    type="button"
+                    mat-raised-button
+                    color="primary"
+                    (click)="onAddSkills()"
+                    *ngIf="skillsArr.length < 3; else limit"
+                    [disabled]="skillsArr.invalid"
+                  >
+                    Add Skill
+                  </button>
+                </div>
+
+                <div formArrayName="skills">
+                  <div
+                    class="row mb-2"
+                    *ngFor="let skill of skillsArr.controls; let i = index"
+                  >
+                    <div class="col-md-10">
+                      <input
+                        class="form-control"
+                        [formControlName]="i"
+                        placeholder="Enter Skill"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <button
+                        type="button"
+                        mat-raised-button
+                        color="warn"
+                        (click)="skillsArr.removeAt(i)"
+                      >
+                        Remove
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
+            </div>
+            <div class="text-center">
+              <button
+                *ngIf="!isInEditMode"
+                type="submit"
+                mat-raised-button
+                color="primary"
+                class="w-100"
+              >
+                Add User
+              </button>
+
+              <button
+                *ngIf="isInEditMode"
+                type="button"
+                mat-raised-button
+                color="accent"
+                class="w-100"
+                (click)="onUpdateUser()"
+              >
+                Update User
+              </button>
             </div>
           </form>
         </div>
@@ -135,3 +230,7 @@
     </div>
   </div>
 </div>
+
+<ng-template #limit>
+  <p class="alert alert-danger">You can add only 3 skill..</p>
+</ng-template>
