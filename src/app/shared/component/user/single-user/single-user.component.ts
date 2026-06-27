@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Iuser } from 'src/app/shared/model/Iuser';
 import { UserService } from 'src/app/shared/service/user.service';
 import { GetConfirmComponent } from '../../get-confirm/get-confirm.component';
@@ -28,12 +28,20 @@ export class SingleUserComponent implements OnInit {
   }
 
   getUserbyId() {
-    this.userId = this._activedRoute.snapshot.paramMap.get('userId')!;
-    this._userService.getUserById(this.userId).subscribe({
-      next: (data) => {
-        this.getUserObj = data;
-      },
-    });
+    // this.userId = this._activedRoute.snapshot.paramMap.get('userId')!;
+    // this._userService.getUserById(this.userId).subscribe({
+    //   next: (data) => {
+    //     this.getUserObj = data;
+    //   },
+    // });
+    this._activedRoute.params.subscribe((params : Params) =>{
+      this.userId = params['userId'];
+      this._userService.getUserById(this.userId).subscribe({
+        next : data =>{
+          this.getUserObj = data
+        }
+      })
+    })
   }
 
   onRemove() {

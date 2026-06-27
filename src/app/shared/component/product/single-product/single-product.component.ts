@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Iproduct } from 'src/app/shared/model/Iproduct';
 import { ProductService } from 'src/app/shared/service/product.service';
 import { SnackbarService } from 'src/app/shared/service/snackbar.service';
@@ -28,12 +28,20 @@ export class SingleProductComponent implements OnInit {
   }
 
   getProduct() {
-    this.productId = +this._activedRoutes.snapshot.paramMap.get('productId')!;
-    this._productService.getProductbyId(this.productId).subscribe({
-      next: (data) => {
-        this.productObj = data;
-      },
-    });
+    // this.productId = +this._activedRoutes.snapshot.paramMap.get('productId')!;
+    // this._productService.getProductbyId(this.productId).subscribe({
+    //   next: (data) => {
+    //     this.productObj = data;
+    //   },
+    // });
+    this._activedRoutes.params.subscribe((params : Params) =>{
+      this.productId = +params['productId'];
+      this._productService.getProductbyId(this.productId).subscribe({
+        next : data =>{
+          this.productObj = data
+        }
+      })
+    })
   }
 
   onRemove() {
