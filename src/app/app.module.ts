@@ -21,6 +21,8 @@ import { SingleUserComponent } from './shared/component/user/single-user/single-
 import {MatChipsModule} from '@angular/material/chips';
 import { UserFormComponent } from './shared/component/user/user-form/user-form.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { AuthComponent } from './shared/component/auth/auth.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     GetConfirmComponent,
     UserDashboardComponent,
     SingleUserComponent,
-    UserFormComponent
+    UserFormComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatDividerModule,
     ReactiveFormsModule,
     MatChipsModule,
-     MatCheckboxModule
+     MatCheckboxModule,
+     HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
